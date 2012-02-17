@@ -1,0 +1,66 @@
+.thumb-container,
+.thumb-inner,
+.thumb-img {
+	border: 0;
+	display: block;
+	display: inline-block;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+
+.thumb-container {
+	background: #000000;
+/*	border: 1px solid;
+	border-color: #ccc #aaa #aaa #ccc;*/
+	margin: 5px;
+	padding: 5px;
+	width: 70px;
+	height: 70px;
+}
+
+.thumb-container a,
+.thumb-container img {
+	border: 0;
+	margin: 0;
+}
+
+.thumb-center img,
+.thumb-strip,
+.thumb-icon {
+	position: absolute;
+	
+}
+
+.thumb-center img {
+	margin-left: 50%;
+	margin-top: 65%;
+}
+
+.thumb-strip {
+	background: #000;
+	background: rgba(255, 255, 255, 0.5);
+	color: #222;
+	font: 10px/16px Arial, sans-serif;
+	height: 16px;
+	bottom: 0;
+	left: 0;
+	letter-spacing: -1px;
+	text-indent: 4px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 100%;
+	display:none;
+}
+
+.thumb-icon {
+	background: url(images/tango-icon.png) no-repeat;
+	bottom: 2px;
+	height: 22px;
+	right: 4px;
+	width: 22px;
+}
