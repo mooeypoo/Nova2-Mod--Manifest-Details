@@ -68,9 +68,11 @@ Now look for this line (around line 75):
 Change colspan="6"
 
 And this line (around 145): 
-```html
+
+```
 	<td colspan="4"><h4><?php echo $sub['name'];?></h4></td>
 ```
+
 Change colspan='5'
 
 2. Open your application/views/_base_override/main/js/personnel_index_js.php page.
