@@ -91,9 +91,12 @@ Now all that's left to do is add the javascript command. Go to the end of the fi
 Make sure it's above that line otherwise this won't be part of your jQuery code. 
 
 Insert this just above the closing brackets (the snippet above):
+
 ```javascript
 // THUMBNAILS //
+
 $('.charimg').thumbs();
+
 ```
 
 And you're done. 
