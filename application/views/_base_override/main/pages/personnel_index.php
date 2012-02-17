@@ -110,9 +110,9 @@
 									<?php endif; ?>
 								</td>
 								<td>
-								<!-- SPECIES+GENDER FIX -->
+								<!-- MOD MANIFEST -->
 									<?php echo $char['char_species'].' ('.$char['char_gender'].')';?>
-								<!-- SPECIES+GENDER FIX -->
+								<!-- MOD MANIFEST -->
 								</td>
 								<td class="col_75 align_right">
 									<?php echo anchor('personnel/character/'. $char['char_id'], img($char['combadge']), array('class' => 'bold image'));?>
@@ -180,9 +180,9 @@
 											<?php endif; ?>
 										</td>
 										<td>
-								<!-- SPECIES+GENDER FIX -->
+								<!-- MOD MANIFEST -->
 									<?php echo $char['char_species'].' ('.$char['char_gender'].')';?>
-								<!-- SPECIES+GENDER FIX -->
+								<!-- MOD MANIFEST -->
 										</td>
 										<td class="col_75 align_right">
 											<?php echo anchor('personnel/character/'. $char['char_id'], img($char['combadge']), array('class' => 'bold image'));?>

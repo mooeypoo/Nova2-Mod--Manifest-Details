@@ -9,9 +9,10 @@ class Personnel extends Nova_personnel {
 		parent::__construct();
 	}
 	
-	/**
-	 * Put your own methods below this...
-	 */
+
+	/**********************/
+	/**** MANIFEST MOD ****/
+	/**********************/
 	public function index()
 	{
 		// load the models
