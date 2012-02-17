@@ -43,9 +43,10 @@ Look for:
 
 ```
 <td class="col_75 align_right">
-<?php echo anchor('personnel/character/'. $char['char_id'], img($char['combadge']), array('class' => 'bold image'));?>
+	<?php echo anchor('personnel/character/'. $char['char_id'], img($char['combadge']), array('class' => 'bold image'));?>
 </td>
 ```
+
 This appears TWICE on the page. Once around line 115, and once more around line 180.
 
 Above each of those, paste this:
