@@ -61,11 +61,13 @@ Access Control URL: site/settings
 2. Upload the entire contents of the application/assets/js folder into your domain's nova application/assets folder.
 
 3. Open [your domain]/application/controllers/personnel.php controller, and copy the entire function index() { } segment into the one in your domain. For your convenience, the function begins and ends with
+
 ```
 	/**********************/
 	/**** MANIFEST MOD ****/
 	/**********************/
 ```
+
 Just mark the text from the first note to the second, and copy it to your personnel.php controller.
 
 4. Upload the view folder. PLEASE NOTE: If either of those files:
@@ -89,58 +91,65 @@ Only do this if your view files for the manifest_index have already been edited.
 
 Look for:
 
-```html
-	<td class="col_75 align_right">
-		<?php echo anchor('personnel/character/'. $char['char_id'], img($char['combadge']), array('class' => 'bold image'));?>
-	</td>
-
+```
+<td class="col_75 align_right">
+	<?php echo anchor('personnel/character/'. $char['char_id'], img($char['combadge']), array('class' => 'bold image'));?>
+</td>
 ```
 
 This appears TWICE on the page. Once around line 115, and once more around line 180.
 
 Above each of those, paste this:
 
-```html
-		<td>
-			<!-- MOD MANIFEST -->
-			<?php echo $char['char_species'].' ('.$char['char_gender'].')';?>
-			<!-- MOD MANIFEST -->
-		</td>
+```
+<td>
+	<!-- MOD MANIFEST -->
+	<?php echo $char['char_species'].' ('.$char['char_gender'].')';?>
+	<!-- MOD MANIFEST -->
+</td>
 ```
 
 Now look for this line (around line 75):
-```html
-	<td colspan="5"><h3><?php echo $dept['name'];?></h3></td>
+
 ```
+<td colspan="5"><h3><?php echo $dept['name'];?></h3></td>
+```
+
 Change colspan="6"
 
 And this line (around 145): 
-```html
+
+```
 	<td colspan="4"><h4><?php echo $sub['name'];?></h4></td>
 ```
+
 Change colspan='5'
 
 2. Open your application/views/_base_override/main/js/personnel_index_js.php page.
 
 Add this to the top of your file, *ABOVE* the <?php tag:
+
 ```html
-	<script type="text/javascript" src="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.js"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.css" />
+<script type="text/javascript" src="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.css" />
 ```
 
 Now all that's left to do is add the javascript command. Go to the end of the file, around line #115, above this part:
 
 ```javascript
-	});
+});
 </script>
 ```
 
 Make sure it's above that line otherwise this won't be part of your jQuery code. 
 
 Insert this just above the closing brackets (the snippet above):
+
 ```javascript
-		// THUMBNAILS //
-		$('.charimg').thumbs();
+// THUMBNAILS //
+
+$('.charimg').thumbs();
+
 ```
 
 And you're done. 
