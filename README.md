@@ -16,35 +16,90 @@ If your controller file was previously edited, be careful not overriding the cha
 
 ## Installation
 
-1. Upload the entire contents of the application/assets/js folder into your domain's nova application/assets folder.
+1. Go to Control Panel -> Settings and click the "Manage User-created Settings" link.
+Click on "Add User-Created Settings" and add these fields:
 
-2. Open [your domain]/application/controllers/personnel.php controller, and copy the entire function index() { } segment into the one in your domain. For your convenience, the function begins and ends with
+```
+Label: Manifest Details - Show Species
+Setting Key: modManifest_show_species
+Value: True
+```
+
+```
+Lable: Manifest Details - Show Gender
+Setting Key: modManifest_show_gender
+Value: True
+```
+
+```
+Label: Manifest Details - Show Thumbnail
+Settings Key: modManifest_show_thumbnail
+Value: True
+```
+
+You will later be able to change these values. 
+**It is VERY IMPORTANT that they "Setting Key" is exactly as is written!**
+
+2. Add menu items.  Go to Control Panel -> Menu Items and click on the "Add Menu Items" link.
+
+Add the following item:
+
+```
+Name: Manifest Options
+Link: admin/modmanifest
+Link Type: Onsite
+
+Type: Admin Sub Navigation
+Category: Admin Control Panel
+
+Login Requirement: Must be Logged In
+Use Access Control: Yes
+Access Control URL: site/settings
+```
+
+
+2. Upload the entire contents of the application/assets/js folder into your domain's nova application/assets folder.
+
+3. Open [your domain]/application/controllers/personnel.php controller, and copy the entire function index() { } segment into the one in your domain. For your convenience, the function begins and ends with
+```
 	/**********************/
 	/**** MANIFEST MOD ****/
 	/**********************/
+```
 Just mark the text from the first note to the second, and copy it to your personnel.php controller.
 
-2. If you never changed your application/views/_base_override/main/pages/personnel_index.php and/or your application/views/_base_override/main/js/personnel_index_js.php you can simply upload the content to your nova installation under the same path.
+4. Upload the view folder. PLEASE NOTE: If either of those files:
 
-NOTE: If you already edited these files for another mod, you will have to be careful manually managing this extension into the existing files. I only recommend you do that if YOU REALLY KNOW WHAT YOU'RE DOING! 
+application/views/_base_override/main/pages/personnel_index.php
+application/views/_base_override/main/js/personnel_index_js.php
+
+Were changed in your application/views/ folder, you will need to skip the step. DO NOT upload the view files if they were previously modified, unless the modification was ONLY for this particular mod. If you upload the files, you will override whatever previous modification you already had. Skip to "Editing the view files" if that's the case.
+
+If the files were only updated by this mod (Manifest Details) then feel free to re-upload them both without worry.
+
+### NOTE
+If you already edited these files for another mod, you will have to be careful manually managing this extension into the existing files. I only recommend you do that if YOU REALLY KNOW WHAT YOU'RE DOING! 
 
 The next section is meant for those of you who KNOW what they're doing (please!) and want to edit previously-edited view files.
 
-## Editing the view files
+# Editing the view files
 Only do this if your view files for the manifest_index have already been edited. 
 
 1. Open your application/views/_base_override/main/pages/personnel_index.php
 
 Look for:
+
 ```html
 	<td class="col_75 align_right">
 		<?php echo anchor('personnel/character/'. $char['char_id'], img($char['combadge']), array('class' => 'bold image'));?>
 	</td>
 
 ```
+
 This appears TWICE on the page. Once around line 115, and once more around line 180.
 
 Above each of those, paste this:
+
 ```html
 		<td>
 			<!-- MOD MANIFEST -->

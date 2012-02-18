@@ -19,9 +19,15 @@ class Personnel extends Nova_personnel {
 		$this->load->model('depts_model', 'dept');
 		$this->load->model('ranks_model', 'ranks');
 		$this->load->model('positions_model', 'pos');
+		$this->load->model('settings_model', 'settings');
 		
 		// get the variables
 		$manifest = $this->uri->segment(3, $this->dept->get_default_manifest());
+		
+		// grab all settings
+		$data['settings']['show']['species'] = $this->settings->get_setting('modManifest_show_species');
+		$data['settings']['show']['gender'] = $this->settings->get_setting('modManifest_show_gender');
+		$data['settings']['show']['thumbnail'] = $this->settings->get_setting('modManifest_show_thumbnail');
 		
 		// pull all the manifests
 		$manifests = $this->dept->get_all_manifests();
@@ -210,11 +216,9 @@ class Personnel extends Nova_personnel {
 												$data['depts'][$dept]['sub'][$a]['pos'][$b]['chars'][$c]['crew_type'] = $char->crew_type;
 												$data['depts'][$dept]['sub'][$a]['pos'][$b]['chars'][$c]['combadge'] = $cb_img;
 												
-												$data['depts'][$dept]['sub'][$a]['pos'][$b]['chars'][$c]['char_gender'] = $gender; //1=gender
-												$data['depts'][$dept]['sub'][$a]['pos'][$b]['chars'][$c]['char_species'] = $species; //2=species
-
-												$data['depts'][$dept]['sub'][$a]['pos'][$b]['chars'][$c]['char_image'] = $char_img; 
-												
+													$data['depts'][$dept]['sub'][$a]['pos'][$b]['chars'][$c]['char_gender'] = $gender; //1=gender
+													$data['depts'][$dept]['sub'][$a]['pos'][$b]['chars'][$c]['char_species'] = $species; //2=species
+													$data['depts'][$dept]['sub'][$a]['pos'][$b]['chars'][$c]['char_image'] = $char_img; 
 												++$c;
 											}
 										}
@@ -354,9 +358,9 @@ class Personnel extends Nova_personnel {
 										$data['depts'][$dept]['pos'][$b]['chars'][$c]['crew_type'] = $char->crew_type;
 										$data['depts'][$dept]['pos'][$b]['chars'][$c]['combadge'] = $cb_img;
 
-										$data['depts'][$dept]['pos'][$b]['chars'][$c]['char_gender'] = $gender; //1=gender
-										$data['depts'][$dept]['pos'][$b]['chars'][$c]['char_species'] = $species; //2=species
-										$data['depts'][$dept]['pos'][$b]['chars'][$c]['char_image'] = $char_img; 
+											$data['depts'][$dept]['pos'][$b]['chars'][$c]['char_gender'] = $gender; //1=gender
+											$data['depts'][$dept]['pos'][$b]['chars'][$c]['char_species'] = $species; //2=species
+											$data['depts'][$dept]['pos'][$b]['chars'][$c]['char_image'] = $char_img; 
 										
 										++$c;
 									}
@@ -425,4 +429,8 @@ class Personnel extends Nova_personnel {
 		Template::render();
 	}
 
+	/**********************/
+	/**** MANIFEST MOD ****/
+	/**********************/
+	
 }

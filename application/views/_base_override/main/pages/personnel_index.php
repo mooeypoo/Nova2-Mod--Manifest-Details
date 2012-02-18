@@ -90,11 +90,15 @@
 								<td class="col_15"></td>
 								<td class="col_150"><?php echo img($char['rank_img']);?></td>
 								<td class="col_15">
+								<!-- MOD MANIFEST -->
 								<?php 
-								if ($char['char_image']) {
-									echo img($char['char_image']);
+								if ($settings['show']['thumbnail']== true) {
+									if ($char['char_image']) {
+										echo img($char['char_image']);
+									}
 								}
 								?>
+								<!-- MOD MANIFEST -->
 								</td>
 								<td>
 									<strong class="fontMedium">
@@ -111,7 +115,14 @@
 								</td>
 								<td>
 								<!-- MOD MANIFEST -->
-									<?php echo $char['char_species'].' ('.$char['char_gender'].')';?>
+								<?php 
+								if ($settings['show']['species']== true) {
+									echo $char['char_species'].' ';
+								}
+								if ($settings['show']['gender']== true) {
+									echo '('.$char['char_gender'].')';
+								}
+								?>
 								<!-- MOD MANIFEST -->
 								</td>
 								<td class="col_75 align_right">
@@ -159,11 +170,15 @@
 										<td class="col_15"></td>
  										<td class="col_150"><?php echo img($char['rank_img']);?></td>
 								<td class="col_30">
+								<!-- MOD MANIFEST -->
 								<?php 
-								if ($char['char_image']) {
-									echo img($char['char_image']);
+								if ($settings['show']['thumbnail']== true) {
+									if ($char['char_image']) {
+										echo img($char['char_image']);
+									}
 								}
 								?>
+								<!-- MOD MANIFEST -->
 								</td>
 										<td>
 											<strong class="fontMedium">
@@ -180,9 +195,16 @@
 											<?php endif; ?>
 										</td>
 										<td>
-								<!-- MOD MANIFEST -->
-									<?php echo $char['char_species'].' ('.$char['char_gender'].')';?>
-								<!-- MOD MANIFEST -->
+											<!-- MOD MANIFEST -->
+											<?php 
+											if ($settings['show']['species']== true) {
+												echo $char['char_species'].' ';
+											}
+											if ($settings['show']['gender']== true) {
+												echo '('.$char['char_gender'].')';
+											}
+											?>
+											<!-- MOD MANIFEST -->
 										</td>
 										<td class="col_75 align_right">
 											<?php echo anchor('personnel/character/'. $char['char_id'], img($char['combadge']), array('class' => 'bold image'));?>
