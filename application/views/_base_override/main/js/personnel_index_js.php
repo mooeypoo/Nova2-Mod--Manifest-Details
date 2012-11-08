@@ -1,8 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-<script type="text/javascript" src="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.js"></script>
+<?php
+/*<script type="text/javascript" src="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.css" />
-
+*/ ?>
+<style>
+.charimg {
+	border: 5px #000 solid;
+	margin: 2px;
+	padding: 0px;
+}
+</style>
 <?php
 /* strip out the comma from the string */
 $manifest_default_values = str_replace(',', '', $manifest_defaults);
@@ -108,8 +116,6 @@ if(isset($display))
 		$('#loader').hide(); /* hide the loader */
 		$('#manifest').removeClass('hidden'); /* show the manifest */
 		
-		// THUMBNAILS //
-		$('.charimg').thumbs();
 
 		
 	});

@@ -32,6 +32,8 @@ class Personnel extends Nova_personnel {
 		// pull all the manifests
 		$manifests = $this->dept->get_all_manifests();
 		
+		$timthumb = base_url().Location::asset('scripts', 'timthumb.php');
+		$data['timthumb'] = $timthumb;
 		if ($manifests->num_rows() > 0)
 		{
 			if ($manifests->num_rows() > 1)
@@ -136,38 +138,20 @@ class Personnel extends Nova_personnel {
 												$src = (strstr($images[0], 'http://') !== false)
 													? $images[0]
 													: base_url().Location::asset('images/characters', trim($images[0]));
-
-												list($imgwidth, $imgheight, $imgtype, $imgattr) = getimagesize($src);
-												
-												if ($imgwidth < $imgheight) {
-													$factor = round($imgwidth/80, 2);
-												} else {
-													$factor = round($imgheight/80 ,2);
-												}
 												// set the image
 												$char_img = array(
-													'src' => $src,
+													'src' => $timthumb."?src=".$src."&w=80&h=80",
 													'alt' => $name,
 													'class' => 'charimg',
-													'height' => ($imgheight/$factor),
-													'width' => ($imgwidth/$factor)
 												);
 											} else { //no image:
 												// set the image
-												list($imgwidth, $imgheight, $imgtype, $imgattr) = getimagesize(base_url().Location::img('no-avatar.png', $this->skin, 'main'));
-												
-												if ($imgwidth < $imgheight) {
-													$factor = round($imgwidth/80, 2);
-												} else {
-													$factor = round($imgheight/80 ,2);
-												}
-
 												$char_img = array(
-													'src' => Location::img('no-avatar.png', $this->skin, 'main'),
+													'src' => $timthumb."?src=".Location::img('no-avatar.png', $this->skin, 'main')."&w=80&h=80",
 													'alt' => '',
 													'class' => 'charimg',
-													'height' => ($imgheight/$factor),
-													'width' => ($imgwidth/$factor)
+//													'height' => ($imgheight/$factor),
+//													'width' => ($imgwidth/$factor)
 												);
 											}
 											
@@ -279,37 +263,19 @@ class Personnel extends Nova_personnel {
 												
 												$src = (strstr($images[0], 'http://') !== false)
 													? $images[0]
-													: base_url().Location::asset('images/characters', trim($images[0]));
-												list($imgwidth, $imgheight, $imgtype, $imgattr) = getimagesize($src);
-
-												if ($imgwidth < $imgheight) {
-													$factor = round($imgwidth/80, 2);
-												} else {
-													$factor = round($imgheight/80 ,2);
-												}
-												
+													: base_url().Location::asset('images/characters', trim($images[0]))."&w=80&h=80";
 												// set the image
 												$char_img = array(
-													'src' => $src,
+													'src' => $timthumb."?src=".$src,
 													'alt' => $name,
 													'class' => 'charimg',
-													'height' => ($imgheight/$factor),
-													'width' => ($imgwidth/$factor)
 												);
 											} else { //no image:
-												list($imgwidth, $imgheight, $imgtype, $imgattr) = getimagesize(base_url().Location::img('no-avatar.png', $this->skin, 'main'));
-												if ($imgwidth < $imgheight) {
-													$factor = round($imgwidth/80, 2);
-												} else {
-													$factor = round($imgheight/80 ,2);
-												}
 												// set the image
 												$char_img = array(
-													'src' => Location::img('no-avatar.png', $this->skin, 'main'),
+													'src' => $timthumb."?src=".Location::img('no-avatar.png', $this->skin, 'main')."&w=80&h=80",
 													'alt' => '',
 													'class' => 'charimg',
-													'height' => ($imgheight/$factor),
-													'width' => ($imgwidth/$factor)
 												);
 											}
 

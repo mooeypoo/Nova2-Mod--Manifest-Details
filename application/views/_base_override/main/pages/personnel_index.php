@@ -7,6 +7,7 @@
 	<?php echo text_output($label['loading'], 'h3', 'gray');?>
 </div>
 
+<? print "<hr>$timthumb<hr>"; ?>
 
 <div id="manifest" class="hidden">
 	<?php if (isset($manifests)): ?>
