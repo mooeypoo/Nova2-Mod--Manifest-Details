@@ -37,6 +37,12 @@ Settings Key: modManifest_show_thumbnail
 Value: True
 ```
 
+```
+Label: Manifest Details - Thumbnail Size
+Settings Key: modManifest_thumbnail_size
+Value: 80
+```
+
 You will later be able to change these values. 
 **It is VERY IMPORTANT that they "Setting Key" is exactly as is written!**
 
@@ -58,7 +64,7 @@ Access Control URL: site/settings
 ```
 
 
-2. Upload the entire contents of the application/assets/js folder into your domain's nova application/assets folder.
+2. Upload the entire contents of the application/assets/scripts folder into your domain's nova application/assets folder.
 
 3. Open [your domain]/application/controllers/personnel.php controller, and copy the entire function index() { } segment into the one in your domain. For your convenience, the function begins and ends with
 
@@ -130,26 +136,13 @@ Change colspan='5'
 Add this to the top of your file, *ABOVE* the <?php tag:
 
 ```html
-<script type="text/javascript" src="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() . APPFOLDER;?>/assets/js/jquery.thumbs.css" />
-```
-
-Now all that's left to do is add the javascript command. Go to the end of the file, around line #115, above this part:
-
-```javascript
-});
-</script>
-```
-
-Make sure it's above that line otherwise this won't be part of your jQuery code. 
-
-Insert this just above the closing brackets (the snippet above):
-
-```javascript
-// THUMBNAILS //
-
-$('.charimg').thumbs();
-
+<style>
+.charimg {
+	border: 5px #000 solid;
+	margin: 2px;
+	padding: 0px;
+}
+</style>
 ```
 
 And you're done. 
